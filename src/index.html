@@ -4,13 +4,145 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather Forecast</title>
+    <style>
+        body{
+            background: black;
+        }
+        #mainContainer{
+            width: 95%;
+            margin: auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+        header{
+            font-size: 92px;
+            margin-bottom: 3vh;
+            text-shadow: 1px 1px 2px black, 0 0 40px purple, 0 0 20px rgb(90, 3, 90)
+        }
+        #color{
+            background: black;
+            border-radius: 0;
+            color: white;
+            font-size: 100px;
+            margin-bottom: 3vh;
+            text-shadow: 1px 1px 2px black, 0 0 40px purple, 0 0 20px rgb(90, 3, 90)
+        }
+        nav input{
+            width: 100%;
+            border-radius: 10px;
+            font-size: 45px;
+            margin-bottom: 3vh;
+        }
+        #results{
+            background: white;
+            width: 925px;
+            font-size: 2rem;
+            color: black;
+        }
+        .targetedByMouse{
+            background: grey;
+        }
+        .targetedByArrow{
+            background: grey;
+        }
+        section{
+            width: 935px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #displayWeather{
+            width: 100%;
+            height: 70vh;
+            margin-bottom: 3vh;
+            padding-top: 2vh;
+            border-radius: 10px;
+            background: hotpink;
+        }
+        #displayWeather>div:last-child{
+            display: flex;
+            justify-content: center;
+        }
+        #forecastWeather{
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            justify-content: space-between;
+        }
+        #forecastWeather>div{
+            width: 23.5%;
+            padding-top: 2vh;
+            border-radius: 10px;
+            background: hotpink;
+        }
+        p{
+            margin: 0;
+        }
+        .etc p{
+            margin-right: 1rem;
+            margin-left: 1rem;
+            padding-top: 1rem;
+        }
+        figure{
+            margin: 0;
+        }
+        .cityName{
+            font-size: 4rem;
+        }
+        .day{
+            font-size: 1.5rem;
+        }
+        .temp{
+            font-size: 3rem;
+        }
+        .weather{
+            font-size: 1.5rem;
+        }
+    </style>
 </head>
 <body>
-    <script>
-        const city = "2988507";
-        const units = "metric";
-        fetch(`/.netlify/functions/fetch-weather?id=${city}&units=${units}`).then(res => {console.log(res.json())});
-    </script>
+    <div id="mainContainer">
+        <header>
+            <div><span id="color">hotpink </span>weather website</div>
+        </header>
+        <nav>
+            <input type="text" name="city" id="city" value="" placeholder="Which city?" size="40">
+            <div id="results"></div>
+        </nav>
+        <section>
+            <!-- <div id="displayWeather">
+                <p class="cityName"></p>
+                <p class="day"></p>
+                <Figure class="weatherIcon">
+                    <img src="" alt="">
+
+                </Figure>
+                <p class="temp"></p>
+                <p class="weather"></p>
+                <div class ="etc">
+                    <div>
+                        <p class="wind"></p>
+                        <p class="humidity"></p>
+                    </div>
+                    <div>
+                        <p class="pressure"></p>
+                        <p class="cloudiness"></p>
+                    </div>
+                </div>
+            </div>
+            <div id="forecastWeather">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div> -->
+        </section>
+    </div>
+    <script src="./index.js"></script>
 </body>
 </html>
