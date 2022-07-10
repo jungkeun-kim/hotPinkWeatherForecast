@@ -4,7 +4,7 @@ const handler = async (event) => {
 	const { id, units } = event.queryStringParameters;
 
 	const API_SECRET = process.env.API_SECRET;
-	const url = `http://api.openweathermap.org/data/2.5/forecast?id=${id}&appid=${API_SECRET}&units=${units}`;
+	const url = `https://api.openweathermap.org/data/2.5/forecast?id=${id}&appid=${API_SECRET}&units=${units}`;
 
 	try {
 		const { data } = await axios.get(url);
