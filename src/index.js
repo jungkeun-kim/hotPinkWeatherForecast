@@ -205,13 +205,32 @@ inputCity.addEventListener("input", function (e) {
 inputCity.addEventListener("keyup", function (e) {
 	if (e.key === "Enter" && !results.innerHTML) {
 		let cityName = e.target.value;
-		let city = matchesID[matches.indexOf(cityName)];
+		let cityID = matchesID[matches.indexOf(cityName)];
 		let units = "metric";
-		fetch(
-			`/.netlify/functions/fetch-weather?id=${city}&units=${units}`
-		).then((res) => {
-			displayHTML(res.json());
+
+		let xhr = new XMLHttpRequest();
+		xhr.open(
+			"GET",
+			`/.netlify/functions/fetch-weather?id=${cityID}&units=${units}`
+		);
+		xhr.addEventListener("load", () => {
+			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+				// if the file is loaded without error
+				displayHTML(JSON.parse(xhr.responseText));
+			} else if (
+				xhr.readyState === XMLHttpRequest.DONE &&
+				xhr.status != 200
+			) {
+				// in case of error
+				alert(
+					"There is an error !\n\nCode :" +
+						xhr.status +
+						"\nText : " +
+						xhr.statusText
+				);
+			}
 		});
+		xhr.send(null); // the request is ready we send everything !
 	}
 });
 
