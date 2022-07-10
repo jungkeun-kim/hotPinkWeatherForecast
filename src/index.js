@@ -210,7 +210,7 @@ inputCity.addEventListener("keyup", function (e) {
 		fetch(
 			`/.netlify/functions/fetch-weather?id=${city}&units=${units}`
 		).then((res) => {
-			displayHTML(JSON.parse(res));
+			displayHTML(res.json());
 		});
 	}
 });
